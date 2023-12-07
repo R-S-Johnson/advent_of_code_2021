@@ -1,16 +1,16 @@
 sub = [0, 0, 0]
 
-file = open("day_2/input.txt", 'r')
+with open("day_2/input.txt", 'r') as f:
+    data = f.readlines()
+    data = [line.split(' ') for line in data]
 
-for line in file.readlines():
-    newLine = line.split()
-    if newLine[0] == "forward":
-        sub[0] += int(newLine[1])
-        sub[1] += sub[2] * int(newLine[1])
-    elif newLine[0] == "down":
-        sub[2] += int(newLine[1])
-    elif newLine[0] == "up":
-        sub[2] -= int(newLine[1])
+for line in data:
+    if line[0] == "forward":
+        sub[0] += int(line[1])
+        sub[1] += sub[2] * int(line[1])
+    elif line[0] == "down":
+        sub[2] += int(line[1])
+    elif line[0] == "up":
+        sub[2] -= int(line[1])
 
-print(sub[0]*sub[1])
-file.close()
+print(sub[0] * sub[1])
